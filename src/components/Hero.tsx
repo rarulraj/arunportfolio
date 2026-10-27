@@ -60,6 +60,11 @@ export const Hero: React.FC = () => {
             <Button href="/blog" variant="tertiary" size="m">
               Writing
             </Button>
+            {about.resume?.display && (
+              <Button href={about.resume.link} variant="tertiary" size="m">
+                Resume
+              </Button>
+            )}
             <Button href="https://github.com/rarulraj" variant="tertiary" size="m">
               GitHub
             </Button>

@@ -174,6 +174,15 @@ export default function About() {
                         </React.Fragment>
                     ),
                 )}
+                {about.resume?.display && (
+                  <Button
+                    href={about.resume.link}
+                    prefixIcon="document"
+                    label={about.resume.label}
+                    size="s"
+                    variant="primary"
+                  />
+                )}
               </Flex>
             )}
           </Column>

@@ -90,6 +90,11 @@ const about = {
     display: false,
     link: "",
   },
+  resume: {
+    display: true,
+    label: "Download resume",
+    link: "/Arun-Arulraj-Resume.pdf",
+  },
   intro: {
     display: true,
     title: "Introduction",
@@ -106,7 +111,9 @@ const about = {
         Engineering in progress at Georgia Tech. Previously software
         engineering at C3 AI and Meta, Head of AI at Soundromeda, and founder
         of Reefly (acquired). Writing at{" "}
-        <a href="https://arunarulraj.substack.com">arunarulraj.substack.com</a>.
+        <a href="https://arunarulraj.substack.com">arunarulraj.substack.com</a>
+        . Full PDF resume available on this page.
+
       </>
     ),
   },
@@ -297,36 +304,85 @@ const about = {
   },
   technical: {
     display: true,
-    title: "Focus areas",
+    title: "Technical capabilities",
     skills: [
       {
-        title: "Industrial AI & Historians",
+        title: "Industrial data & historians",
         description: (
           <>
-            TDengine TSDB + IDMP, OPC UA / OT data paths, asset
-            contextualization, Cesium / spatial ops views, events, KPIs, and AI
-            agents on live plant data.
+            Design and deliver AI-ready historian architectures on TDengine
+            TSDB + IDMP for Fortune 500 / industrial customers — OT ingestion
+            (OPC UA, MQTT, telemetry), asset modeling, contextualization,
+            events, KPIs, dashboards, and AI agents on live plant data. Migrate
+            or sync from legacy historians (Wonderware / AVEVA, PI-class
+            environments) into modern TSDB without ripping out the plant.
+            Spatial ops demos (Cesium + IDMP canvases) for wind and other
+            fleets.
           </>
         ),
         images: noImages,
       },
       {
-        title: "AI / ML Systems",
+        title: "AI / ML & agentic systems",
         description: (
           <>
-            Predictive models, agentic tooling, NLP, and production ML from
-            enterprise platforms (C3 AI) to 0→1 products (Soundromeda, Reefly).
+            Design, train, and deploy models with TensorFlow, PyTorch,
+            scikit-learn, spaCy, OpenCV, Pandas, and NumPy — predictive
+            analytics, NLP, computer vision, and data pipelines. Build agentic
+            AI tooling and prompting workflows that accelerate development
+            (C3 AI Fed Apps / agent pipelines). Production experience from
+            enterprise platforms to 0→1 products (Soundromeda Head of AI,
+            Reefly CV + LLM routing).
           </>
         ),
         images: noImages,
       },
       {
-        title: "Core stack",
+        title: "Full-stack product engineering",
         description: (
           <>
-            Top skills from LinkedIn: Python, JavaScript, SQL, C#, C++ — plus
-            TypeScript, cloud services, and DevOps across industrial and
-            consumer products.
+            Ship end-to-end applications: React, Vue, Redux, JavaScript /
+            TypeScript frontends with Python and Node backends, SQL and NoSQL
+            data layers, REST APIs, and high-performance features. Consumer and
+            enterprise UX — from Reefly (TypeScript, ~100 monthly active users)
+            to C3 AI application surfaces.
+          </>
+        ),
+        images: noImages,
+      },
+      {
+        title: "Systems, XR & performance",
+        description: (
+          <>
+            C++, Rust, and C for performance-critical paths — Meta Quest VR/AR
+            components, real-time rendering/latency work, and Unreal Engine 5 /
+            XR learning tools (Quest, HTC Vive Pro Eye). Comfortable in
+            distributed systems, microservices, and low-level debugging when
+            immersive or industrial runtimes demand it.
+          </>
+        ),
+        images: noImages,
+      },
+      {
+        title: "Cloud, DevOps & delivery",
+        description: (
+          <>
+            Azure and AWS, Docker, CI/CD, automated testing, and unit tests —
+            streamline deploy pipelines, cut downtime, and keep industrial and
+            enterprise releases reliable. Git-based collaboration across
+            customer engineering teams and internal product orgs.
+          </>
+        ),
+        images: noImages,
+      },
+      {
+        title: "Languages & tooling",
+        description: (
+          <>
+            Python · C++ · Rust · C · Java · JavaScript / TypeScript · C# ·
+            SQL / NoSQL · React · Vue · Redux · Git · Perl · Unreal scripting ·
+            TensorFlow · PyTorch · spaCy · scikit-learn · OpenCV · Pandas ·
+            NumPy · Docker · CI/CD · Azure · AWS.
           </>
         ),
         images: noImages,
