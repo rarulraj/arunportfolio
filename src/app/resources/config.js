@@ -2,7 +2,7 @@
 const baseURL = "https://arunportfolio-seven.vercel.app";
 
 const routes = {
-  "/": true,
+  "/": false,
   "/about": true,
   "/work": true,
   "/blog": true,

@@ -29,13 +29,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        if (Object.prototype.hasOwnProperty.call(routes, pathname)) {
+          return Boolean(routes[pathname as keyof typeof routes]);
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (pathname.startsWith(route) && routes[route]) {
             return true;
           }
         }

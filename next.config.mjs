@@ -13,6 +13,10 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  async redirects() {
+    // Home was 404ing client-side; About is the landing page.
+    return [{ source: "/", destination: "/about", permanent: false }];
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "substackcdn.com", pathname: "/**" },

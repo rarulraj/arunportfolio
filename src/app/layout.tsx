@@ -4,7 +4,7 @@ import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
 
 import { Footer, Header, RouteGuard } from "@/components";
-import { baseURL, effects, style, font, home } from "@/app/resources";
+import { baseURL, effects, style, font, home, about } from "@/app/resources";
 
 import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
 import { opacity, SpacingToken } from "@/once-ui/types";
@@ -15,7 +15,7 @@ export async function generateMetadata() {
     title: home.title,
     description: home.description,
     baseURL: baseURL,
-    path: home.path,
+    path: about.path,
     image: home.image,
   });
 }
