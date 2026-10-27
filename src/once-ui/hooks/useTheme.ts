@@ -8,10 +8,16 @@ export function useTheme() {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
+    try {
+      const store = window.localStorage;
+      if (!store || typeof store.getItem !== 'function') return;
+      const savedTheme = store.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    } catch {
+      // ignore
     }
   }, []);
 
@@ -19,7 +25,14 @@ export function useTheme() {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    try {
+      const store = window.localStorage;
+      if (store && typeof store.setItem === 'function') {
+        store.setItem('theme', newTheme);
+      }
+    } catch {
+      // ignore
+    }
   }, [theme]);
 
   return {

@@ -22,6 +22,28 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
+function readStoredTheme(): Theme | null {
+  try {
+    if (typeof window === "undefined") return null;
+    const store = window.localStorage;
+    if (!store || typeof store.getItem !== "function") return null;
+    return store.getItem("theme") as Theme | null;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredTheme(theme: Theme) {
+  try {
+    if (typeof window === "undefined") return;
+    const store = window.localStorage;
+    if (!store || typeof store.setItem !== "function") return;
+    store.setItem("theme", theme);
+  } catch {
+    // ignore storage failures (SSR / restricted environments)
+  }
+}
+
 export function ThemeProvider({ children }: ThemeProviderProps) {
   // Start with system theme on server, will be updated on client
   const [theme, setTheme] = useState<Theme>("system");
@@ -30,7 +52,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Initialize theme from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
+    const savedTheme = readStoredTheme();
     if (savedTheme) {
       setTheme(savedTheme);
     }
@@ -70,7 +92,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     theme,
     resolvedTheme,
     setTheme: (newTheme: Theme) => {
-      localStorage.setItem('theme', newTheme);
+      writeStoredTheme(newTheme);
       setTheme(newTheme);
     },
   };

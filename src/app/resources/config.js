@@ -1,53 +1,57 @@
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.magic-portfolio.com";
+// Live deployment
+const baseURL = "https://arunportfolio-seven.vercel.app";
 
 const routes = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
+  "/blog": false,
+  "/gallery": false,
 };
 
-// Enable password protection on selected routes
-// Set password in the .env file, refer to .env.example
-const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
+const protectedRoutes = {};
 
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Syne, Manrope, IBM_Plex_Mono } from "next/font/google";
 
-const primaryFont = Geist({
+const primaryFont = Syne({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
-const monoFont = Geist_Mono({
+const secondaryFont = Manrope({
+  variable: "--font-secondary",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const monoFont = IBM_Plex_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
 const font = {
   primary: primaryFont,
-  secondary: primaryFont,
-  tertiary: primaryFont,
+  secondary: secondaryFont,
+  tertiary: secondaryFont,
   code: monoFont,
 };
 
 const style = {
-  theme: "dark", // theme is not necessary when using ThemeProvider (default)
-  neutral: "gray", // sand | gray | slate
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100" // 90 | 95 | 100 | 105 | 110
+  theme: "dark",
+  neutral: "slate",
+  brand: "emerald",
+  accent: "orange",
+  solid: "contrast",
+  solidStyle: "flat",
+  border: "conservative",
+  surface: "translucent",
+  transition: "micro",
+  scaling: "100",
 };
 
 const effects = {
@@ -58,25 +62,25 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 60,
     x: 50,
-    y: 60,
+    y: 0,
     width: 100,
-    height: 50,
+    height: 55,
     tilt: 0,
-    colorStart: "accent-background-strong",
+    colorStart: "brand-background-strong",
     colorEnd: "page-background",
   },
   dots: {
-    display: true,
+    display: false,
     opacity: 40,
     size: "2",
     color: "brand-background-strong",
   },
   grid: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 35,
     color: "neutral-alpha-medium",
     width: "0.25rem",
     height: "0.25rem",
@@ -94,7 +98,7 @@ const effects = {
 const display = {
   location: true,
   time: true,
-  themeSwitcher: true
+  themeSwitcher: true,
 };
 
 const mailchimp = {

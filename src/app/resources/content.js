@@ -1,41 +1,39 @@
-import { Logo } from "@/once-ui/components";
+/**
+ * @typedef {{ src: string, alt: string, width?: number, height?: number, orientation?: "horizontal" | "vertical" }} PortfolioImage
+ */
+
+/** @type {PortfolioImage[]} */
+const noImages = [];
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Arun",
+  lastName: "Arulraj",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "AI Solutions Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "",
+  location: "America/Los_Angeles",
+  languages: ["English"],
 };
 
 const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
-    </>
-  ),
+  display: false,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
+  description: <>Occasional notes on industrial AI, historians, and building in public.</>,
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/rarulraj",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/arun-arulraj-236a78259/",
   },
   {
     name: "X",
@@ -45,7 +43,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: "https://substack.com/@arunarulraj",
   },
 ];
 
@@ -53,18 +51,24 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} — Industrial AI & Data Infrastructure`,
+  description:
+    "Arun Arulraj helps enterprises build and adopt industrial AI. AI Solutions Engineer at TDengine. Founder (acquired). Ex-Meta, C3 AI.",
+  headline: <>Arun Arulraj</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: (
+      <>
+        Now: <strong className="ml-4">AI Solutions Engineer @ TDengine</strong>
+      </>
+    ),
+    href: "/work/cesium-idmp-industrial-ai",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Helping enterprises build &amp; adopt industrial AI — AI &amp; data
+      infrastructure · Founder (acquired) · Ex-Meta, C3 AI. Code &amp; builds on{" "}
+      <a href="https://github.com/rarulraj">github.com/rarulraj</a>.
     </>
   ),
 };
@@ -73,7 +77,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} in the San Francisco Bay Area`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -82,115 +86,205 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I build and architect AI systems for industrial operations. At TDengine I
+        help manufacturers, utilities, and energy companies modernize historians,
+        operational analytics, and AI on live plant data — TSDB + IDMP so teams
+        get Data → Context → Action, not just tags and dashboards.
+        <br />
+        <br />
+        Dual bachelor&apos;s in Computer Science and Chemistry; M.S. Computer
+        Science at Georgia Tech. Previously software engineering at C3 AI and
+        Meta, Head of AI at Soundromeda, and founder of Reefly (acquired).
+        Writing at{" "}
+        <a href="https://substack.com/@arunarulraj">substack.com/@arunarulraj</a>.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "TDengine",
+        timeframe: "Sep 2025 — Present",
+        role: "AI Solutions Engineer · Full-time · Hybrid",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Help manufacturers, utilities, and energy companies adopt TDengine
+            as an AI-ready data historian — collection, contextualization,
+            analytics, events, and visualization on TSDB + IDMP.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Ship live industrial AI demos (including Cesium 3D + IDMP agent
+            workflows) and customer engagements that show Data → Context →
+            Action in the field — ProveIt and beyond.
+          </>,
+          <>
+            Publish on industrial data contextualization and modern modeling:
+            time-series + asset hierarchy + real context + streaming insights.
           </>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            src: "/images/work/cesium/04.jpg",
+            alt: "Cesium IDMP wind farm demo",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/work/proveit/dashboard.png",
+            alt: "IDMP dashboard from ProveIt demos",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Stealth AI Startup",
+        timeframe: "Oct 2026 — Present",
+        role: "Founder",
+        achievements: [
+          <>Building something new in AI — early-stage, self-employed.</>,
+        ],
+        images: noImages,
+      },
+      {
+        company: "The Founders Experience",
+        timeframe: "Oct 2026 — Present",
+        role: "Co-Founder",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Co-building a San Francisco startup community whose goal is simple:
+            help founders turn ideas into successful companies.
           </>,
         ],
-        images: [],
+        images: noImages,
+      },
+      {
+        company: "Reefly",
+        timeframe: "Feb 2026 — Oct 2026",
+        role: "Founder · Acquired",
+        achievements: [
+          <>
+            Built Reefly — come for the community, stay because your tank lives
+            here. Acquired by an independent business owner.
+          </>,
+        ],
+        images: noImages,
+      },
+      {
+        company: "Necessary Ventures",
+        timeframe: "Jun 2025 — Present",
+        role: "Venture Scout · formerly VC Fellow",
+        achievements: [
+          <>
+            Source early-stage startups tackling critical global challenges;
+            special projects that advance strategic goals and operations at a
+            mission-driven fund.
+          </>,
+        ],
+        images: noImages,
+      },
+      {
+        company: "C3 AI",
+        timeframe: "Jun 2024 — Sep 2025",
+        role: "Software Engineer · Fed Apps / Agentic AI Internal Tools",
+        achievements: [
+          <>
+            Built scalable enterprise AI applications, deployed predictive ML
+            models, and shipped modern DevOps practices on the Fed Apps team.
+          </>,
+          <>
+            Worked on agentic AI internal tools that accelerated how teams
+            build and operate AI products.
+          </>,
+        ],
+        images: noImages,
+      },
+      {
+        company: "Meta",
+        timeframe: "May 2024 — Jun 2024",
+        role: "Software Engineer · VR / AR Solutions",
+        achievements: [
+          <>Contributed to VR and AR solution engineering workstreams.</>,
+        ],
+        images: noImages,
+      },
+      {
+        company: "Soundromeda",
+        timeframe: "Jan 2022 — Mar 2024",
+        role: "Head of AI · Founding AI Engineer",
+        achievements: [
+          <>
+            Built the AI product 0→1, secured funding, and deployed ML systems
+            for a music-native gaming platform.
+          </>,
+          <>
+            Led the AI team to define a unified vision and ship impactful
+            models across product surfaces.
+          </>,
+        ],
+        images: noImages,
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Georgia Institute of Technology",
+        description: <>M.S. Computer Science (in progress)</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "California State University, East Bay",
+        description: <>B.S. Computer Science · B.S. Chemistry</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Focus areas",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Industrial AI & Historians",
+        description: (
+          <>
+            TDengine TSDB + IDMP, OPC UA / OT data paths, asset
+            contextualization, Cesium / spatial ops views, events, KPIs, and AI
+            agents on live plant data.
+          </>
+        ),
+        images: noImages,
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "AI / ML Systems",
+        description: (
+          <>
+            Predictive models, agentic tooling, NLP, and production ML from
+            enterprise platforms (C3 AI) to 0→1 products (Soundromeda, Reefly).
+          </>
+        ),
+        images: noImages,
+      },
+      {
+        title: "Core stack",
+        description: (
+          <>
+            Top skills from LinkedIn: Python, JavaScript, SQL, C#, C++ — plus
+            TypeScript, cloud services, and DevOps across industrial and
+            consumer products.
+          </>
+        ),
+        images: noImages,
       },
     ],
   },
@@ -198,71 +292,24 @@ const about = {
 
 const blog = {
   path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  label: "Writing",
+  title: "Notes on industrial AI and data",
+  description: `Writing by ${person.name}`,
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Selected work by ${person.name}`,
 };
 
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  title: `Gallery – ${person.name}`,
+  description: `Visuals by ${person.name}`,
+  images: noImages,
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

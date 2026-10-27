@@ -52,10 +52,15 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('theme') || 'system';
-                  const root = document.documentElement;
+                  var theme = 'system';
+                  try {
+                    if (window.localStorage && typeof window.localStorage.getItem === 'function') {
+                      theme = window.localStorage.getItem('theme') || 'system';
+                    }
+                  } catch (e) {}
+                  var root = document.documentElement;
                   if (theme === 'system') {
-                    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                     root.setAttribute('data-theme', isDark ? 'dark' : 'light');
                   } else {
                     root.setAttribute('data-theme', theme);
