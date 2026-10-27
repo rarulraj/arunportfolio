@@ -203,7 +203,13 @@ export default function About() {
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
                       <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
+                        {"link" in experience && experience.link ? (
+                          <a href={experience.link} target="_blank" rel="noreferrer">
+                            {experience.company}
+                          </a>
+                        ) : (
+                          experience.company
+                        )}
                       </Text>
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
                         {experience.timeframe}

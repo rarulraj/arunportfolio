@@ -169,10 +169,18 @@ const about = {
         company: "The Founders Experience",
         timeframe: "Oct 2026 — Present",
         role: "Co-Founder",
+        link: "https://thefoundersexperience.com",
         achievements: [
           <>
             Co-building a San Francisco startup community whose goal is simple:
-            help founders turn ideas into successful companies.
+            help founders turn ideas into successful companies — site at{" "}
+            <a href="https://thefoundersexperience.com">thefoundersexperience.com</a>
+            , company page on{" "}
+            <a href="https://www.linkedin.com/company/the-founders-experience-startup-community/">
+              LinkedIn
+            </a>
+            , product code on{" "}
+            <a href="https://github.com/rarulraj/TheFoundersExperience-">GitHub</a>.
           </>,
         ],
         images: noImages,
