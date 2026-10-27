@@ -201,24 +201,46 @@ const about = {
         role: "Software Engineer · Fed Apps / Agentic AI Internal Tools",
         achievements: [
           <>
-            Built scalable enterprise AI applications, deployed predictive ML
-            models, and shipped modern DevOps practices on the Fed Apps team.
+            Built scalable enterprise AI on Fed Apps — contested logistics
+            context for resilient supply networks (
+            <a href="https://c3.ai/products/applications/c3-ai-contested-logistics">
+              C3 AI Contested Logistics
+            </a>
+            ).
           </>,
           <>
-            Worked on agentic AI internal tools that accelerated how teams
-            build and operate AI products.
+            Deployed predictive ML and agentic internal tools that sped how
+            teams build and operate AI products; modern DevOps throughout.
           </>,
         ],
-        images: noImages,
+        images: [
+          {
+            src: "/images/work/c3ai/contested-logistics.jpg",
+            alt: "C3 AI Contested Logistics",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Meta",
         timeframe: "May 2024 — Jun 2024",
         role: "Software Engineer · VR / AR Solutions",
         achievements: [
-          <>Contributed to VR and AR solution engineering workstreams.</>,
+          <>
+            VR / AR solution engineering on the{" "}
+            <a href="https://www.meta.com/quest/">Meta Quest</a> ecosystem —
+            immersive application and XR delivery workstreams.
+          </>,
         ],
-        images: noImages,
+        images: [
+          {
+            src: "/images/work/meta/quest.jpg",
+            alt: "Meta Quest",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Soundromeda",
