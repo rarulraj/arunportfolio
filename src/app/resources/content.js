@@ -13,6 +13,7 @@ const person = {
   },
   role: "AI Solutions Engineer",
   avatar: "/images/avatar.jpg",
+  portrait: "/images/portrait.jpg",
   email: "",
   location: "America/Los_Angeles",
   languages: ["English"],
@@ -101,10 +102,11 @@ const about = {
         <br />
         <br />
         Dual bachelor&apos;s in Computer Science and Chemistry; M.S. Computer
-        Science at Georgia Tech. Previously software engineering at C3 AI and
-        Meta, Head of AI at Soundromeda, and founder of Reefly (acquired).
-        Writing at{" "}
-        <a href="https://substack.com/@arunarulraj">substack.com/@arunarulraj</a>.
+        Science at Georgia Tech, plus an M.Eng. in Aerospace / Aeronautical
+        Engineering in progress at Georgia Tech. Previously software
+        engineering at C3 AI and Meta, Head of AI at Soundromeda, and founder
+        of Reefly (acquired). Writing at{" "}
+        <a href="https://arunarulraj.substack.com">arunarulraj.substack.com</a>.
       </>
     ),
   },
@@ -221,18 +223,33 @@ const about = {
       {
         company: "Soundromeda",
         timeframe: "Jan 2022 — Mar 2024",
-        role: "Head of AI · Founding AI Engineer",
+        role: "Head of Artificial Intelligence · Founding AI Engineer",
         achievements: [
           <>
-            Built the AI product 0→1, secured funding, and deployed ML systems
-            for a music-native gaming platform.
+            Listed on Soundromeda&apos;s leadership people bench as Head of
+            AI (
+            <a href="https://www.linkedin.com/company/soundromeda/people/">
+              company people page
+            </a>
+            ) after founding the AI function.
           </>,
           <>
-            Led the AI team to define a unified vision and ship impactful
-            models across product surfaces.
+            Built the AI product 0→1, helped secure funding, and deployed ML
+            for a music-gaming platform (songs → Unreal songworlds).
+          </>,
+          <>
+            Led AI vision through NVIDIA Inception milestone and shipped
+            systems across creator / player surfaces.
           </>,
         ],
-        images: noImages,
+        images: [
+          {
+            src: "/images/work/soundromeda/home.jpg",
+            alt: "Soundromeda product site",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
@@ -242,7 +259,13 @@ const about = {
     institutions: [
       {
         name: "Georgia Institute of Technology",
-        description: <>M.S. Computer Science (in progress)</>,
+        description: (
+          <>
+            M.S. Computer Science
+            <br />
+            M.Eng. Aerospace / Aeronautical Engineering (in progress)
+          </>
+        ),
       },
       {
         name: "California State University, East Bay",
@@ -293,8 +316,8 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Writing",
-  title: "Notes on industrial AI and data",
-  description: `Writing by ${person.name}`,
+  title: "Writing from Substack",
+  description: `Essays by ${person.name} on industrial AI, agents, and building — from arunarulraj.substack.com`,
 };
 
 const work = {

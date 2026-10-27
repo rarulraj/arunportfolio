@@ -1,0 +1,89 @@
+.featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.75rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(8, 15, 24, 0.45));
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.featured:hover {
+  border-color: rgba(52, 211, 153, 0.4);
+  transform: translateY(-2px);
+}
+
+.featuredMedia {
+  position: relative;
+  min-height: 220px;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: #0b1220;
+}
+
+.featuredMedia img,
+.thumb img {
+  object-fit: cover;
+}
+
+.featuredBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  justify-content: center;
+  padding: 0.35rem 0.5rem 0.35rem 0;
+}
+
+.cta {
+  color: #6ee7b7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.95rem;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(15, 23, 42, 0.55);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.card:hover {
+  border-color: rgba(52, 211, 153, 0.35);
+  transform: translateY(-2px);
+}
+
+.thumb,
+.thumbEmpty {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(135deg, #0f172a, #134e4a);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem 1.05rem;
+}
+
+@media (max-width: 800px) {
+  .featured {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

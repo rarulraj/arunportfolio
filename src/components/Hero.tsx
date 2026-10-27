@@ -2,6 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Avatar, Button, Column, Heading, Row, Text } from "@/once-ui/components";
 import { about, home, person } from "@/app/resources/content";
 import styles from "./Hero.module.scss";
@@ -19,12 +20,25 @@ export const Hero: React.FC = () => {
 
       <div className={styles.layout}>
         <Column fillWidth gap="0" className={styles.copy} style={{ position: "relative", zIndex: 1 }}>
-          <Heading as="h1" className={styles.brand} variant="display-strong-xl">
-            {home.headline}
-          </Heading>
-          <p className={styles.role}>
-            {person.role} @ TDengine · Bay Area · Founder (acquired)
-          </p>
+          <div className={styles.portraitRow}>
+            <div className={styles.portrait}>
+              <Image
+                src={person.portrait || person.avatar}
+                alt={person.name}
+                width={120}
+                height={120}
+                priority
+              />
+            </div>
+            <div>
+              <Heading as="h1" className={styles.brand} variant="display-strong-xl">
+                {home.headline}
+              </Heading>
+              <p className={styles.role}>
+                {person.role} @ TDengine · Bay Area · Founder (acquired)
+              </p>
+            </div>
+          </div>
           <Text
             className={styles.subline}
             wrap="balance"
@@ -42,6 +56,9 @@ export const Hero: React.FC = () => {
             </Button>
             <Button href="/work" variant="secondary" size="m">
               Case studies
+            </Button>
+            <Button href="/blog" variant="tertiary" size="m">
+              Writing
             </Button>
             <Button href="https://github.com/rarulraj" variant="tertiary" size="m">
               GitHub

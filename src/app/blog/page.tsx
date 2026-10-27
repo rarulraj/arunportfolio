@@ -1,8 +1,8 @@
-import { Column, Heading } from "@/once-ui/components";
-import { Mailchimp } from "@/components";
-import { Posts } from "@/components/blog/Posts";
+import { Column, Heading, SmartLink, Text } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
+import { blog, person } from "@/app/resources/content";
+import { getSubstackPosts } from "@/app/resources/substack";
+import { SubstackPosts } from "@/components/blog/SubstackPosts";
 import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
@@ -15,9 +15,11 @@ export async function generateMetadata() {
   });
 }
 
-export default function Blog() {
+export default async function Blog() {
+  const posts = await getSubstackPosts();
+
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="m" gap="24">
       <Schema
         as="blog"
         baseURL={baseURL}
@@ -31,16 +33,17 @@ export default function Blog() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
-      </Heading>
-      <Column
-				fillWidth flex={1}>
-				<Posts range={[1,1]} thumbnail direction="column"/>
-				<Posts range={[2,3]} thumbnail/>
-				<Posts range={[4]} columns="2"/>
-			</Column>
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+      <Column gap="12" maxWidth="s">
+        <Heading variant="display-strong-s">{blog.title}</Heading>
+        <Text onBackground="neutral-weak" variant="body-default-l">
+          Essays on industrial AI, agents, and building — pulled live from{" "}
+          <SmartLink href="https://arunarulraj.substack.com">
+            arunarulraj.substack.com
+          </SmartLink>
+          .
+        </Text>
+      </Column>
+      <SubstackPosts posts={posts} />
     </Column>
   );
 }
