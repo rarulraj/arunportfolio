@@ -142,7 +142,7 @@ const about = {
             height: 9,
           },
           {
-            src: "/images/work/proveit/dashboard.png",
+            src: "/images/work/tdengine/cesium-hero.jpg",
             alt: "IDMP dashboard from ProveIt demos",
             width: 16,
             height: 9,
