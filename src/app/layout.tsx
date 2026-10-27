@@ -4,6 +4,7 @@ import "@/once-ui/tokens/index.scss";
 import classNames from "classnames";
 
 import { Footer, Header, RouteGuard } from "@/components";
+import { SiteBackground } from "@/components/SiteBackground";
 import { baseURL, effects, style, font, home, about } from "@/app/resources";
 
 import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
@@ -75,7 +76,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       </head>
       <ThemeProvider>
         <ToastProvider>
-          <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+          <Column style={{ minHeight: "100vh", position: "relative" }} as="body" fillWidth margin="0" padding="0">
+            <SiteBackground />
             <Background
               position="fixed"
               mask={{
@@ -86,7 +88,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               }}
               gradient={{
                 display: effects.gradient.display,
-                opacity: effects.gradient.opacity as opacity,
+                opacity: 35 as opacity,
                 x: effects.gradient.x,
                 y: effects.gradient.y,
                 width: effects.gradient.width,
@@ -96,13 +98,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 colorEnd: effects.gradient.colorEnd,
               }}
               dots={{
-                display: effects.dots.display,
+                display: false,
                 opacity: effects.dots.opacity as opacity,
                 size: effects.dots.size as SpacingToken,
                 color: effects.dots.color,
               }}
               grid={{
-                display: effects.grid.display,
+                display: false,
                 opacity: effects.grid.opacity as opacity,
                 color: effects.grid.color,
                 width: effects.grid.width,
@@ -117,21 +119,26 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 color: effects.lines.color,
               }}
             />
-            <Flex fillWidth minHeight="16" hide="s"></Flex>
-            <Header />
+            <Flex fillWidth minHeight="16" hide="s" style={{ position: "relative", zIndex: 1 }}></Flex>
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <Header />
+            </div>
             <Flex
-              zIndex={0}
+              zIndex={1}
               fillWidth
               paddingY="l"
               paddingX="l"
               horizontal="center"
               flex={1}
+              style={{ position: "relative" }}
             >
               <Flex horizontal="center" fillWidth minHeight="0">
                 <RouteGuard>{children}</RouteGuard>
               </Flex>
             </Flex>
-            <Footer />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <Footer />
+            </div>
           </Column>
         </ToastProvider>
       </ThemeProvider>

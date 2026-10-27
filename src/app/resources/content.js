@@ -14,7 +14,7 @@ const person = {
   role: "AI Solutions Engineer",
   avatar: "/images/avatar.jpg",
   portrait: "/images/portrait.jpg",
-  email: "",
+  email: "rajaarun@outlook.com",
   location: "America/Los_Angeles",
   languages: ["English"],
 };
@@ -44,7 +44,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "https://substack.com/@arunarulraj",
+    link: "mailto:rajaarun@outlook.com",
   },
 ];
 
