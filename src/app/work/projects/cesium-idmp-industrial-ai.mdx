@@ -1,14 +1,14 @@
 ---
-title: "Case Study · Cesium + IDMP Industrial AI"
+title: "Case Study · CesiumJS + IDMP Geospatial Digital Twin"
 publishedAt: "2026-10-27"
-summary: "Live wind-farm ops inside TDengine IDMP — Cesium 3D turbines, fault/curtailment state, embedded dashboards, and an agent that turns panels into evidence-backed diagnosis."
+summary: "Production-style wind-farm digital twin on TDengine IDMP — CesiumJS 3D tiles, SCADA telemetry binding, curtailment/fault state, and a knowledge-graph agent that grounds diagnosis in live panels."
 images:
   - "/images/work/tdengine/cesium-hero.jpg"
+  - "/images/work/tdengine/cesium-hero-pro.jpg"
   - "/images/work/tdengine/agent.jpg"
   - "/images/work/tdengine/map.jpg"
   - "/images/work/cesium/06.jpg"
   - "/images/work/cesium/08.jpg"
-  - "/images/work/tdengine/feature.jpg"
 link: "https://www.linkedin.com/in/arun-arulraj-236a78259/"
 team:
   - name: "Arun Arulraj"
@@ -19,15 +19,23 @@ team:
 
 ## Challenge
 
-Operators shouldn’t leave the historian to diagnose a turbine. Spatial state, live metrics, and AI reasoning need to live in one place.
+OT operators shouldn’t context-switch out of the historian to diagnose a turbine. Geospatial asset state, high-frequency telemetry, and agentic reasoning need a single semantic surface — not a GIS tab, a SCADA HMI, and a chat window in three different tools.
+
+## Architecture
+
+- **CesiumJS** globe / 3D tileset of Ridge Wind embedded as an **IDMP canvas panel** (WGS84 positions, entity picking, status-driven materials)
+- **Asset hierarchy** in IDMP: customer → site → string → turbine (`WT-N01`…`WT-S03`) with attributes, limits, and child elements
+- **TSDB binding**: active power (kW), wind speed (m/s), rotor RPM, nacelle temperature streamed into panel widgets and floating entity labels
+- **Operational state machine**: healthy / curtailed / fault rendered as emerald · amber · red entity styling on the globe
+- **Agentic diagnosis** on the canvas: live summary, panel interpretation, and evidence retrieval (breaker trip vs aerodynamic scatter loss) via the **knowledge graph**, not free-form hallucination
 
 ## What I shipped
 
-- Cesium map of seven wind turbines embedded as an IDMP canvas panel
-- Color-coded ops state: green healthy · yellow curtailed · red fault
-- Embedded dashboards beside the map (power, wind speed, related signals)
-- Agentic diagnosis from the canvas — live summary, panel interpretation, evidence (e.g. breaker trip vs scatter loss) via the knowledge graph
+- Seven-turbine Cesium scene with pickable entities and HUD overlays (fleet overwatch + per-asset telemetry cards)
+- Side-by-side dashboards for string-level MW totals, meteorological context, and related signals
+- Canvas-native AI workflow: select asset → inspect panels → agent cites evidence from the semantic model
+- Demo narrative for ProveIt / LinkedIn / customer workshops: **Data → Context → Action**
 
 ## Outcome
 
-A demo narrative used across LinkedIn and customer conversations: **Data → Context → Action** — time-series + asset hierarchy + real context + streaming insight, not tags alone.
+A reusable industrial AI reference architecture — time-series historian + asset contextualization + geospatial digital twin + grounded agent — used in enterprise engagements to show why TDengine IDMP is more than tags and charts.

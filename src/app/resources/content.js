@@ -132,9 +132,9 @@ const about = {
             analytics, events, and visualization on TSDB + IDMP.
           </>,
           <>
-            Ship live industrial AI demos (including Cesium 3D + IDMP agent
-            workflows) and customer engagements that show Data → Context →
-            Action in the field — ProveIt and beyond.
+            Ship live industrial AI demos (CesiumJS geospatial digital twins +
+            IDMP agent workflows on SCADA telemetry) and customer engagements
+            that show Data → Context → Action in the field — ProveIt and beyond.
           </>,
           <>
             Publish on industrial data contextualization and modern modeling:
@@ -143,14 +143,14 @@ const about = {
         ],
         images: [
           {
-            src: "/images/work/cesium/04.jpg",
-            alt: "Cesium IDMP wind farm demo",
+            src: "/images/work/tdengine/cesium-hero.jpg",
+            alt: "CesiumJS + IDMP geospatial digital twin — Ridge Wind telemetry HUD",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/work/tdengine/cesium-hero.jpg",
-            alt: "IDMP dashboard from ProveIt demos",
+            src: "/images/work/tdengine/cesium-hero-pro.jpg",
+            alt: "Wind-farm digital twin with SCADA telemetry overlays on Cesium 3D tiles",
             width: 16,
             height: 9,
           },
@@ -316,8 +316,8 @@ const about = {
             events, KPIs, dashboards, and AI agents on live plant data. Migrate
             or sync from legacy historians (Wonderware / AVEVA, PI-class
             environments) into modern TSDB without ripping out the plant.
-            Spatial ops demos (Cesium + IDMP canvases) for wind and other
-            fleets.
+            Geospatial digital twins (CesiumJS 3D tiles + IDMP canvas panels)
+            for wind and other fleets — entity picking, state materials, telemetry HUDs.
           </>
         ),
         images: noImages,
