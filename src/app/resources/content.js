@@ -244,7 +244,7 @@ const about = {
         ],
         images: [
           {
-            src: "/images/work/soundromeda/home.jpg",
+            src: "/images/work/soundromeda/gameplay.jpg",
             alt: "Soundromeda product site",
             width: 16,
             height: 9,
