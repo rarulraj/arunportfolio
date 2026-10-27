@@ -11,6 +11,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.92;
 }
 
 .canvas :global(canvas) {
@@ -22,14 +23,27 @@
 .veil {
   position: absolute;
   inset: 0;
+  /* Keep the center readable; let the plant show strongly on the sides and depth */
   background:
-    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(16, 185, 129, 0.12), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(251, 146, 60, 0.06), transparent 50%),
-    linear-gradient(180deg, rgba(7, 16, 24, 0.35) 0%, rgba(7, 16, 24, 0.72) 55%, rgba(7, 16, 24, 0.88) 100%);
+    radial-gradient(ellipse 55% 70% at 50% 42%, rgba(7, 16, 24, 0.78) 0%, rgba(7, 16, 24, 0.35) 55%, transparent 78%),
+    linear-gradient(180deg, rgba(7, 16, 24, 0.45) 0%, transparent 28%, transparent 72%, rgba(7, 16, 24, 0.7) 100%),
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(16, 185, 129, 0.1), transparent 55%);
+}
+
+@media (max-width: 768px) {
+  .canvas {
+    opacity: 0.75;
+  }
+
+  .veil {
+    background:
+      radial-gradient(ellipse 70% 75% at 50% 40%, rgba(7, 16, 24, 0.82) 0%, rgba(7, 16, 24, 0.45) 60%, transparent 85%),
+      linear-gradient(180deg, rgba(7, 16, 24, 0.55) 0%, transparent 30%, rgba(7, 16, 24, 0.75) 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .canvas {
-    opacity: 0.45;
+    opacity: 0.5;
   }
 }
