@@ -1,7 +1,7 @@
 ---
 title: "Case Study · Ingest Data from Wonderware Historian"
 publishedAt: "2025-11-25"
-summary: "Published TDengine guide for migrating or synchronizing AVEVA / Wonderware Historian data into TDengine TSDB — scalable, SQL-friendly historian modernization."
+summary: "A public path from AVEVA / Wonderware Historian into TDengine — migrate a history, sync it, or keep live values flowing, without ripping the plant out overnight."
 images:
   - "/images/work/wonderware/article.jpg"
   - "/images/work/wonderware/feature.jpg"
@@ -16,18 +16,34 @@ team:
 
 ## Challenge
 
-Industrial teams still hold years of ops data in Wonderware Historian (AVEVA Historian). As analytics and cloud needs grow, they need a scalable, cost-efficient path to modern TSDB storage — without ripping out the plant overnight.
+A lot of plants still keep years of operations data in Wonderware Historian, now AVEVA Historian. SCADA and HMI have been writing into it for a long time. The pain shows up when analytics, cloud, or an AI project needs that history and the existing historian is expensive to grow, awkward to query, or closed to the tools the data team actually uses.
+
+Ripping it out over a weekend is not a real plan. Operators still need the current system. What they need is a scalable, SQL-friendly place to land the same tags — and a choice about whether that landing is a one-time move, a historical sync, or a live feed.
 
 ## What I published
 
-[Ingest Data from Wonderware Historian](https://tdengine.com/ingest-data-from-wonderware-historian/) on tdengine.com — a step-by-step guide to:
+[Ingest Data from Wonderware Historian](https://tdengine.com/ingest-data-from-wonderware-historian/) on tdengine.com is the guide I wrote for that conversation. It is a procedure inside TDengine TSDB-Explorer, not a slide about “modernization.”
 
-- Add an **AVEVA Historian** source in TDengine TSDB-Explorer (**Data In**)
-- Connect via SQL Server hostname/port and authenticate
-- Choose **migrate** or **synchronize** (historical `Runtime.dbo.History` or live `Runtime.dbo.Live`)
-- Configure tags, time windows, retrieve intervals, and tolerance
-- Map columns into TDengine supertables, preview, and submit the ingestion task
+The path starts in **Data In**. You add a source, name the task, set the type to **AVEVA Historian**, optionally attach an agent, and pick the TDengine database that should receive the data. Connection configuration is the SQL Server hostname and port for the historian. Authentication is the username and password that can read it. Check Connection is there so a bad host fails before anyone maps columns.
+
+## Three ways to collect
+
+The interesting part is the Collect section, because plants are not in the same place on a migration.
+
+**Migrate.** Collection mode is migrate. You list the tags, set a tag-list size so the job is grouped, and give a begin time, end time, and time window. The job walks that history in windows and writes it into TDengine. This is the “we are leaving, take the archive” path.
+
+**Synchronize history, and keep going.** Collection mode is synchronize, and the table is `Runtime.dbo.History`. Tags, tag-list size, begin time, and a time window cover the backfill. A retrieve interval polls the live side. A tolerance says how late a value can arrive before the real-time sync may miss it. This is the path for a plant that wants the archive in the new system and does not want a gap when the cutover clock starts.
+
+**Synchronize live values only.** Same synchronize mode, but the table is `Runtime.dbo.Live`. Tags and a retrieve interval. No historical window. This is the path when the archive can stay where it is and the new platform only needs what is happening now.
+
+![TDengine as the landing zone for historian tags](/images/work/wonderware/feature.jpg)
+
+## Mapping into supertables
+
+Data Mapping is where a Wonderware row becomes a TDengine row. Retrieve from Server pulls a sample so the mapping is based on real columns, not a guessed schema. Extract or split can break a field apart — the guide uses `vValue` split on a comma into two columns as the example. A filter can drop rows that should never land, such as `Value > 0`. Mapping picks the supertable and the columns. Preview shows the result before Submit creates the task and returns you to the data-source list to watch it run.
+
+That last step is the one customers actually remember. They can see the task, not just trust that a script somewhere is still polling.
 
 ## Outcome
 
-A public enablement artifact for Wonderware → TDengine modernization — migrate, sync history, or keep real-time flowing — so customers can modernize architecture without disrupting existing operations.
+The article is the public enablement piece I use when a Wonderware estate comes up in a workshop. Migrate the history, sync history plus live, or keep only the live feed — and leave the running plant alone while the new historian fills. TDengine’s side of the bargain in the piece is high-performance ingestion, standard SQL, and a lower cost of keeping the time series than growing the legacy license. The full click-path is the guide itself: [tdengine.com/ingest-data-from-wonderware-historian](https://tdengine.com/ingest-data-from-wonderware-historian/).

@@ -1,7 +1,7 @@
 ---
 title: "Case Study · ProveIt IDMP Live Demo"
 publishedAt: "2026-03-17"
-summary: "Live TDengine IDMP demo at ProveIt — industrial modeling, AI chat on plant data, and real-time panels that sparked strong follow-up interest."
+summary: "A live TDengine IDMP demo at ProveIt — asset models, plant panels, and an agent on the data — built to be operated, not presented."
 images:
   - "/images/work/proveit/idmp-02.jpg"
   - "/images/work/tdengine/cesium-hero.jpg"
@@ -19,14 +19,28 @@ team:
 
 ## Challenge
 
-Show a modern historian story live — asset hierarchy, context, streaming insights — without collapsing into a slideware pitch.
+ProveIt is a room full of people who have already seen a historian slide. Another architecture diagram was not going to change the conversation. The job was to run the product live: an asset hierarchy, context on the equipment, streaming panels, and an assistant that could talk about the plant that was on the screen.
 
-## What I shipped
+The line I wanted the room to leave with was simple. Most historians store data. We built TDengine to understand it.
 
-- Live IDMP walkthrough at ProveIt: models, panels, and AI-assisted interpretation on industrial data
-- Demo surfaces spanning equipment views (e.g. evaporator / pump context), dashboards, and conversational analysis
-- Follow-up narrative: most historians store data; we built TDengine to understand it
+## What I ran
+
+The demo was an IDMP walkthrough, not a recorded click-path. I moved through the model, the panels, and an AI chat grounded on that model, and I stayed on the equipment the audience could see.
+
+One surface was process equipment in context, including evaporator and pump views, so the story was a unit operation rather than a random tag. Another was the dashboard layer: the same signals, arranged the way an operations lead would scan them. The third was conversational. Ask the chat about the equipment in front of you and the answer had to come from the panels and the asset, not from a generic language-model essay about factories.
+
+![Evaporator and pump context inside the demo](/images/work/proveit/evap-pump.png)
+
+![AI chat on the plant data, next to the panels it is reading](/images/work/proveit/ai-chat.png)
+
+That order matters. Data is already in the historian. Context is the asset, the limits, and the relationships. Action is the moment someone asks a question and gets an answer they can check against the trend. If the chat cannot point at the panel, it does not belong in the demo.
+
+## Why live
+
+A recording can hide a refresh, a broken binding, or an answer that was typed in advance. A live room cannot. Building the demo meant the hierarchy had to be real enough to click, the panels had to be bound to streams, and the assistant had to survive a question I did not script. The follow-up I posted after the event is the public version of that hour: [a few weeks removed from ProveIt](https://www.linkedin.com/posts/arun-arulraj-236a78259_a-few-weeks-removed-from-proveit-and-the-activity-7439740904053157889-11Ik).
+
+The same muscle shows up in the later wind-farm work. ProveIt was the historian-and-agent story on plant equipment. Ridge Overwatch is that story with a globe. Both are Data, then context, then action.
 
 ## Outcome
 
-Strong post-event engagement on the live demo. Featured on my LinkedIn profile as a flagship industrial AI moment for TDengine.
+Strong follow-up after the event, and a flagship industrial AI moment on my LinkedIn profile. The useful residue is the demo shape itself: model, panels, chat, in that order, run live.

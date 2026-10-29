@@ -191,11 +191,26 @@ const about = {
         role: "Founder · Acquired",
         achievements: [
           <>
-            Built Reefly — come for the community, stay because your tank lives
-            here. Acquired by an independent business owner.
+            Founded Reefly, a free mobile-first reef app — the tank at the
+            center of tracking, Reef Talk, and the local fish store. Live at{" "}
+            <a href="https://reeflycare.com/">reeflycare.com</a>. Acquired by
+            an independent business owner.
           </>,
         ],
-        images: noImages,
+        images: [
+          {
+            src: "/images/work/reefly/home-hero.jpg",
+            alt: "Reefly homepage — Today card and partner stores",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/work/reefly/tanks.jpg",
+            alt: "Reefly tank parameters beside a Reef Talk thread",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Necessary Ventures",
@@ -275,14 +290,24 @@ const about = {
             for a music-gaming platform (songs → Unreal songworlds).
           </>,
           <>
-            Led AI vision through NVIDIA Inception milestone and shipped
-            systems across creator / player surfaces.
+            Led AI vision through the NVIDIA Inception milestone, and shipped
+            the public artists surface where musicians claim a world —{" "}
+            <a href="https://www.soundromeda.com/artists">
+              soundromeda.com/artists
+            </a>
+            .
           </>,
         ],
         images: [
           {
+            src: "/images/work/soundromeda/artists-hero.jpg",
+            alt: "Soundromeda founding artists page",
+            width: 16,
+            height: 9,
+          },
+          {
             src: "/images/work/soundromeda/gameplay.jpg",
-            alt: "Soundromeda product site",
+            alt: "Soundromeda songworld gameplay",
             width: 16,
             height: 9,
           },

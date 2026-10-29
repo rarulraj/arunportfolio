@@ -1,7 +1,7 @@
 ---
 title: "Case Study · Pharma & Multi-Site IDMP Demos"
 publishedAt: "2026-09-15"
-summary: "Pharma and multi-site industrial demos on TDengine IDMP — batch/compliance-oriented panels and historian-scale storytelling for life-sciences and OT buyers."
+summary: "Workshop demos for life sciences on TDengine IDMP — batches, CPP bands, excursions, and a golden-batch comparison an agent can investigate without pretending to release the batch."
 images:
   - "/images/work/pharma/01.jpg"
   - "/images/work/pharma/02.jpg"
@@ -15,13 +15,38 @@ team:
 
 ## Challenge
 
-Life-sciences and multi-site buyers need to see GMP-aware storytelling: batches, excursions, and site hierarchy — not a generic IoT dashboard.
+A life-sciences buyer does not want a generic IoT dashboard with a pharma color palette. They want to see whether a historian can hold a batch the way quality holds a batch: the site, the unit, the critical process parameters, the limit, the time spent outside that limit, and a comparison to a batch the site already trusts.
 
-## What I shipped
+Multi-site makes it stricter. The story has to survive more than one plant in the tree. A single bioreactor chart does not explain how a network of sites would look, and it does not explain what an agent is allowed to say. The agent can investigate. It does not release the batch.
 
-- Demo recordings and panel flows for pharma / compliance-oriented IDMP scenarios
-- Multi-site narrative patterns reused across customer workshops and internal enablement
+These are workshop demos on a modeled plant, built so a room can click the scenario. They are not a customer’s batch record.
+
+## What the demo walks
+
+The model is a multi-site manufacturing tree with a bioreactor in it. The panels are the CPP story a process engineer already speaks: dissolved oxygen, airflow, filter differential pressure, temperature, pH, and titer against a golden batch.
+
+The investigations I pack onto that model are the ones that change the conversation from “show me a trend” to “tell me what kind of problem this is”:
+
+- **Dissolved oxygen excursion.** DO falls below the low limit in the SOP. The point of the panel is the excursion and the limit, not a release decision.
+- **Filter restriction.** Differential pressure on the sterile-air filter climbs. The question is aeration, not a bad probe.
+- **Airflow band.** Is the airflow still inside the recipe window while something else is not?
+- **Temperature and pH as CPPs.** Each one has a band. Leaving the band is the event.
+- **Probe versus process.** DO looks off-spec while airflow is still in band. That split is how you stop blaming the sensor or the process by habit.
+- **Time outside limits.** The number quality actually files, not a single minimum.
+- **Golden-batch titer.** Harvest compared with the site’s golden overlay, so “a bit low” becomes a comparison you can point at.
+
+![CPP trends and the golden-batch comparison](/images/work/pharma/02.jpg)
+
+A general operator agent on the tree can see the hierarchy, the SOP, the events, and a CPP briefing, and it routes into the excursion, the golden batch, and the broader analysis. The important constraint is on the screen in the room: investigation is not disposition. Nobody in the demo is signing a batch.
+
+## How I reuse it
+
+The same skeleton shows up in enablement and in customer workshops whenever the buyer is regulated or multi-site. Energy and discrete stories on this site use turbines and lines. This one uses sites, batches, and limits, because that is the vocabulary that makes the product legible to the people who would own it.
+
+The recordings and panel flows are internal demo inventory. What transfers is the pattern: hierarchy first, CPP bands and events second, an agent that cites the panel third, and an explicit line about what the agent will not decide.
+
+![Multi-site narrative used across the pharma workshop demos](/images/work/pharma/03.jpg)
 
 ## Outcome
 
-Reusable demo inventory for regulated and multi-site industrial conversations alongside energy and discrete manufacturing stories.
+A reusable life-sciences demo next to the energy and discrete stories: batches, excursions, and site hierarchy, with an agent that can investigate a CPP and still leave the release decision to a person.

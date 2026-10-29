@@ -1,7 +1,7 @@
 ---
 title: "Case Study · Meta Quest VR / AR"
 publishedAt: "2024-06-01"
-summary: "Software engineering on VR and AR solution workstreams at Meta — Meta Quest as the consumer and developer surface for immersive experiences."
+summary: "A short, intense software engineering seat on VR and AR solutions at Meta — Quest as the hardware and runtime immersive apps actually ship on."
 images:
   - "/images/work/meta/quest.jpg"
 link: "https://www.meta.com/quest/"
@@ -12,15 +12,28 @@ team:
     linkedIn: "https://www.linkedin.com/in/arun-arulraj-236a78259/"
 ---
 
-## Product
+## The surface
 
-[Meta Quest](https://www.meta.com/quest/) is Meta’s VR headset family and accessories — the hardware and software surface for immersive apps, social presence, and spatial computing.
+[Meta Quest](https://www.meta.com/quest/) is the headset family, the accessories, and the software runtime for immersive apps. It is both a consumer product and the developer target: if an experience is going to be worn, the frame rate, the tracking, the input, and the comfort constraints are part of the application, not a polish pass at the end.
 
-## My role
+I joined Meta as a software engineer on **VR / AR Solutions** for a short window, May 2024 through June 2024. The seat was solution engineering on the Quest ecosystem — immersive applications and the XR delivery workstreams around them — not a multi-year product ownership role. I treat it that way on purpose. It was a high-intensity engagement, and the useful part is what it trained, not a claim that I designed the headset.
 
-- Software Engineer · **VR / AR Solutions** at Meta (May 2024 – Jun 2024)
-- Contributed to VR and AR solution engineering workstreams tied to the Quest ecosystem
+## What solution engineering means here
 
-## Focus
+VR and AR solutions work is the layer between an experience someone wants and a headset someone will keep on. On Quest that means application logic that respects the device: spatial input instead of a mouse, a render budget that cannot miss frames without making the wearer sick, and a delivery path from a build to a device a reviewer or a partner can put on.
 
-Short, high-intensity engagement on immersive product engineering — bridging application logic with Quest-class XR delivery expectations.
+The engineering habits that matter at that layer are closer to systems work than to a typical web feature. You care about latency, about what runs on the device, and about failure modes that show up as discomfort rather than as an error toast. C++ and real-time debugging show up because the runtime does. So does the discipline of testing on the hardware, not only in a desktop mirror of the scene.
+
+My path into that seat was not accidental. Before Meta I had already been inside Unreal worlds at Soundromeda, where a song had to become a place you could walk through. Quest was the same class of problem on Meta’s platform: an immersive application has to be shipped as an experience, with the device’s constraints treated as product requirements.
+
+I do not describe internal Meta roadmaps, unreleased features, or other people’s product work from that month. The public surface is Quest. My role was software engineering on VR and AR solutions tied to that ecosystem.
+
+## What I carried out
+
+The engagement was short. The transfer was not. Real-time and XR constraints are now part of how I look at any interactive system, including the industrial twins elsewhere on this site: a 3D view is only useful if picking an asset, reading telemetry, and getting an answer stay in one place and stay fast enough to trust. The Quest month was practice at that standard, on hardware people wear.
+
+It also sits in a straight line with the rest of the immersive work: Unreal songworlds, then Quest-class XR delivery, then later Cesium scenes where the “world” is a plant instead of a game. Different industries. Same demand that the 3D view and the underlying system agree with each other.
+
+## Outcome
+
+A focused VR / AR solutions engagement on the Quest platform, and a sharper instinct for real-time delivery that shows up in everything I have built since that has to be worn, played, or operated in 3D. The product is [meta.com/quest](https://www.meta.com/quest/).

@@ -1,7 +1,7 @@
 ---
 title: "Case Study · CesiumJS + IDMP Geospatial Digital Twin"
 publishedAt: "2026-10-27"
-summary: "Production-style wind-farm digital twin on TDengine IDMP — CesiumJS 3D tiles, SCADA telemetry binding, curtailment/fault state, and a knowledge-graph agent that grounds diagnosis in live panels."
+summary: "Ridge Overwatch — a wind-farm digital twin on TDengine. Seven turbines in Cesium, dashboards inside the 3D scene, and fault investigation from the built-in agent. No external AI service."
 images:
   - "/images/work/tdengine/cesium-hero.jpg"
   - "/images/work/tdengine/cesium-hero-pro.jpg"
@@ -9,7 +9,7 @@ images:
   - "/images/work/tdengine/map.jpg"
   - "/images/work/cesium/06.jpg"
   - "/images/work/cesium/08.jpg"
-link: "https://www.linkedin.com/in/arun-arulraj-236a78259/"
+link: "https://www.linkedin.com/posts/arun-arulraj-236a78259_tdengine-industrialai-cesium-ugcPost-7520956547888447489-d1P9/"
 team:
   - name: "Arun Arulraj"
     role: "AI Solutions Engineer · TDengine"
@@ -17,25 +17,64 @@ team:
     linkedIn: "https://www.linkedin.com/in/arun-arulraj-236a78259/"
 ---
 
-## Challenge
+## The question
 
-OT operators shouldn’t context-switch out of the historian to diagnose a turbine. Geospatial asset state, high-frequency telemetry, and agentic reasoning need a single semantic surface — not a GIS tab, a SCADA HMI, and a chat window in three different tools.
+What if an industrial historian did more than store tags? I built **Ridge Overwatch** to answer that on camera: an interactive wind farm that combines Cesium, TDengine TSDB, and IDMP. The walkthrough is in this LinkedIn video: [Ridge Overwatch](https://www.linkedin.com/posts/arun-arulraj-236a78259_tdengine-industrialai-cesium-ugcPost-7520956547888447489-d1P9/).
 
-## Architecture
+The spark was David Rodriguez’s PI System and Cesium demonstration. I wanted the same geospatial move on TDengine, with one difference that matters in a plant: the agent is already inside the historian. It does not need a separate AI product wired up beside the SCADA stack.
 
-- **CesiumJS** globe / 3D tileset of Ridge Wind embedded as an **IDMP canvas panel** (WGS84 positions, entity picking, status-driven materials)
-- **Asset hierarchy** in IDMP: customer → site → string → turbine (`WT-N01`…`WT-S03`) with attributes, limits, and child elements
-- **TSDB binding**: active power (kW), wind speed (m/s), rotor RPM, nacelle temperature streamed into panel widgets and floating entity labels
-- **Operational state machine**: healthy / curtailed / fault rendered as emerald · amber · red entity styling on the globe
-- **Agentic diagnosis** on the canvas: live summary, panel interpretation, and evidence retrieval (breaker trip vs aerodynamic scatter loss) via the **knowledge graph**, not free-form hallucination
+Operators should not leave the historian to diagnose a turbine. The GIS view, the trend, and the investigation belong on one surface.
+
+## What the video shows
+
+Ridge Overwatch is a seven-turbine wind farm you can move through in Cesium, with the operational picture drawn on the assets themselves.
+
+- **Real-time monitoring** of all seven turbines on the globe, not a table of tag names
+- **Interactive dashboards embedded in the 3D environment**, so string totals, weather, and the selected asset stay in the scene
+- **AI fault investigation on historical telemetry** — the agent looks at what the turbine actually did, not a generic maintenance article
+- **Recommendations that use asset relationships, documentation, and operational data** already modeled in IDMP
+- The whole path **runs inside TDengine**. There is no external AI service to configure before the investigation works
+
+You can start on the same product for free, up to 5,000 tags.
+
+![Ridge Wind digital twin — turbines, telemetry HUD, and status on the Cesium scene](/images/work/tdengine/cesium-hero-pro.jpg)
+
+Healthy, curtailed, and faulted turbines read as different materials on the globe. Pick a turbine and the floating label carries the live signals: active power, wind speed, rotor speed, nacelle temperature. The side panels are the same IDMP dashboards a control room would already trust, placed next to the asset instead of in another browser tab.
+
+![IDMP agent on the canvas — investigation grounded in the selected asset](/images/work/tdengine/agent.jpg)
+
+## How it is wired
+
+CesiumJS draws the globe. TDengine stores the time series for the assets on it. IDMP is the semantic layer: which turbine, which string, which limits, which documents.
+
+- **Scene.** A CesiumJS globe and 3D tileset for Ridge Wind, embedded as an IDMP canvas panel. Positions are WGS84. Entities are pickable. Status drives the material.
+- **Asset model.** Customer, site, string, turbine. The demo fleet is `WT-N01` through `WT-S03`, with attributes, limits, and child elements. Related elements let a string and its turbines stay connected past the tree.
+- **Telemetry.** Active power (kW), wind speed (m/s), rotor RPM, and nacelle temperature bind into panel widgets and the entity labels.
+- **State.** Healthy, curtailed, and fault render as emerald, amber, and red.
+- **Agent.** Live summary, panel interpretation, and evidence retrieval through the knowledge graph. A breaker trip and an aerodynamic loss are different stories. The agent is supposed to cite the one the data supports.
+
+The browser never holds database credentials. A small service queries TDengine and returns coordinates plus measurements. Each asset has a stable id, longitude, latitude, and optional height. Any other column shows up when the asset is selected. `status` colors the point. The page refreshes about every five seconds, and the JSON is cached for a few seconds so every browser is not hitting the database on its own timer.
+
+Fixed assets such as turbines keep coordinates on supertable tags and read the latest values with `LAST`, one child table per entity. Moving assets such as a fleet keep longitude and latitude in the time series itself. The same page shape covers both. The example package is [cesium-tdengine](https://github.com/arunTDengine/cesium-tdengine), and the write-up that matches it is the IDMP doc [Integrating with CesiumJS](https://idmpdocs.tdengine.com/integrating-with-other-systems/integrating-with-cesiumjs/).
+
+When the assets are already IDMP elements, the globe can stay the same and the service reads attribute values with an IDMP token instead of SQL. The Cesium page can also sit inside an IDMP dashboard as an iframe.
+
+![Fleet map and string context beside the globe](/images/work/tdengine/map.jpg)
+
+## Why the agent does not need a side project
+
+A common demo stacks Cesium, an MCP server, and an outside LLM, then spends the workshop on glue. TDengine’s built-in agent already has the assets, the operational data, the equipment relationships, and the documentation. The Cesium dashboard is one more resource you can hand it so it understands the environment it is looking at.
+
+That is the line in the video. Fault investigation and the recommendation both come from context that was modeled before anyone opened a chat window: the hierarchy, the related elements, the historian history, and the docs. Understand, investigate, act — without standing up a second AI stack.
 
 ## What I shipped
 
-- Seven-turbine Cesium scene with pickable entities and HUD overlays (fleet overwatch + per-asset telemetry cards)
-- Side-by-side dashboards for string-level MW totals, meteorological context, and related signals
-- Canvas-native AI workflow: select asset → inspect panels → agent cites evidence from the semantic model
-- Demo narrative for ProveIt / LinkedIn / customer workshops: **Data → Context → Action**
+- The seven-turbine Ridge Overwatch scene, with pickable entities and a telemetry HUD
+- Dashboards for string-level power, meteorological context, and the signals that belong next to a fault
+- A canvas workflow: select the asset, read the panels, let the agent cite evidence from the semantic model
+- The public Cesium integration path — service, `/api/assets`, scenario SQL, and the IDMP embed — so a customer can connect a globe without waiting on a custom project
+- The narrative used in the video and in customer workshops: **Data, then context, then action**
 
 ## Outcome
 
-A reusable industrial AI reference architecture — time-series historian + asset contextualization + geospatial digital twin + grounded agent — used in enterprise engagements to show why TDengine IDMP is more than tags and charts.
+Ridge Overwatch is the reference I use when someone asks what an AI-ready historian looks like in the field. Time-series storage, an asset model, a geospatial twin, and an agent that stays inside the product. The video is the short version. The [CesiumJS integration doc](https://idmpdocs.tdengine.com/integrating-with-other-systems/integrating-with-cesiumjs/) is the version you can run.

@@ -1,7 +1,7 @@
 ---
 title: "Case Study · Industrial Data Contextualization"
 publishedAt: "2025-11-18"
-summary: "Published guide on turning raw OT signals into AI-ready business objects with TDengine IDMP — asset models, KPIs, limits, and dimensions."
+summary: "Why raw OT tags never become AI — and how TDengine IDMP turns them into assets, KPIs, limits, and relationships a person or an agent can trust."
 images:
   - "/images/work/contextualization/article.jpg"
   - "/images/work/contextualization/feature.jpg"
@@ -17,14 +17,41 @@ team:
 
 ## Challenge
 
-Raw tags don’t create operational value. Without context — which asset, which unit, which limits, which process relationship — analytics and AI stay brittle.
+Plants do not suffer from a lack of numbers. Temperatures, pressures, setpoints, states, alarms, quality readings, and maintenance logs are already being stored. What they suffer from is numbers that do not know what they are.
 
-## What I wrote / taught
+A temperature is not useful until you can say it is the inlet temperature of boiler 3 on line 2, sampled every second, under a particular load. A vibration trace is not a health metric until it is motor 17, bearing section, tied to the asset that maintenance will actually open. Without that, every analytics project starts by rebuilding tribal knowledge: which tag, which unit, which limit, which upstream machine.
 
-- [Understanding Industrial Data Contextualization](https://tdengine.com/understanding-industrial-data-contextualization/) on tdengine.com
-- How IDMP links signals to hierarchical assets, KPIs, states, limits, and business dimensions
-- Why contextualization is the foundation for energy optimization, predictive maintenance, dashboards, and industrial AI
+The sources make it worse. PLCs, SCADA, historians, IoT platforms, MES, ERP, and a cloud app each name the same equipment differently. Teams then keep private spreadsheets of “what this tag means,” and the AI project inherits the spreadsheet.
+
+## What contextualization is
+
+[Understanding Industrial Data Contextualization](https://tdengine.com/understanding-industrial-data-contextualization/) is the piece I published on tdengine.com to put a name on that gap. Contextualization is the work of adding structure, semantics, and relationships to raw signals so the same data can be used by operations, analytics, and an agent without a fresh mapping project each time.
+
+Four failures show up when that work is skipped:
+
+- Silos, because each system holds a slice and none of them share a definition of the asset
+- Ambiguous tags that only a senior operator can read
+- Fragmented analysis, where every team writes its own join rules
+- Slow time-to-insight, because context is recreated at the start of every project
+
+Context is what turns the value into a business object. That object is what a dashboard, a maintenance model, or an agent should see.
+
+## How IDMP holds it
+
+TDengine IDMP is the layer I describe in the article. Signals bind to a hierarchical asset model: the measurement belongs to a piece of equipment, and the equipment belongs to a line, a site, a process. On top of the hierarchy you define KPIs, equipment states, and business attributes, and you attach dimensions such as location, organization, limits, categories, and operating conditions.
+
+The model is allowed to change. Plants add equipment, rename lines, and revise limits. IDMP is built so those dimensions can expand and the asset tree can be updated when the physical system changes, instead of freezing a taxonomy on day one and drifting away from the floor.
+
+With that in place, analytics and visualization start from the business object. They do not start from a tag browser. The same structure is what an agent needs if it is going to investigate a fault without inventing a relationship the plant does not have. Related elements, events, and documents only help if the signal was contextualized first.
+
+![From raw signals to assets, KPIs, and limits](/images/work/contextualization/feature.jpg)
+
+## Where I use it
+
+This is the foundation under the other TDengine work on this site. Wonderware ingestion lands tags. Contextualization is what makes those tags a turbine, a boiler, or a batch. The Cesium wind farm, the ProveIt live demo, and the pharma workshop model all assume the hierarchy, the limits, and the relationships already exist. An agent that only sees rows will narrate rows. An agent that sees the asset can say which machine, which limit, and which neighbor.
+
+The article’s close is the line I reuse with customers: energy optimization, predictive maintenance, real-time dashboards, and AI all depend on whether the data carries the right context. Algorithms on isolated signals do not get you there.
 
 ## Outcome
 
-A public reference used in customer and partner conversations to explain why TDengine IDMP is more than a time-series store — it’s the semantic layer for industrial intelligence.
+A public reference for the semantic layer, used in customer and partner conversations when someone asks why IDMP is not “just another time-series store.” The full essay is [Understanding Industrial Data Contextualization](https://tdengine.com/understanding-industrial-data-contextualization/).
